@@ -1,10 +1,11 @@
-import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator, createAppContainer, createMaterialTopTabNavigator } from 'react-navigation'
 import React from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Home from './containers/Home'
 import Teams from './containers/Teams'
 import Details from './containers/Details'
 import Players from './containers/Players'
+import PlayerDetails from './containers/PlayerDetails'
 
 const stackNavigator = createStackNavigator({
     Teams: {
@@ -15,6 +16,9 @@ const stackNavigator = createStackNavigator({
     },
     Players: {
         screen: Players
+    },
+    PlayerDetails: {
+        screen: PlayerDetails
     }
 }, {
         initialRouteName: 'Teams'
@@ -22,13 +26,13 @@ const stackNavigator = createStackNavigator({
 )
 
 
-const appNavigator = createBottomTabNavigator({
+const appNavigator = createMaterialTopTabNavigator({
     Home: {
         screen: Home,
         navigationOptions: {
             tabBarLabel: 'Home',
             tabBarIcon: ({ tintColor, activeTintColor }) => (
-                <Icon name="home" size={30} color={tintColor} />
+                <Icon name="home" size={26} color={tintColor} />
             )
         }
     },
@@ -37,16 +41,23 @@ const appNavigator = createBottomTabNavigator({
         navigationOptions: {
             tabBarLabel: 'Teams',
             tabBarIcon: ({ tintColor, activeTintColor }) => (
-                <Icon name="group" size={30} color={tintColor} />
+                <Icon name="group" size={26} color={tintColor} />
             )
         }
     }
 }, {
         tabBarOptions: {
-            activeBackgroundColor: 'steelblue',
             activeTintColor: 'white',
-            showIcon: true
-        }
+            inactiveTintColor: '#7B8788',
+            showIcon: true,
+            labelStyle: {
+                margin: 2
+            },
+            style: {
+                backgroundColor: '#2C3335',
+            }
+        },
+        tabBarPosition: 'bottom'
     }
 )
 

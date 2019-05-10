@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
-import { Container, Content } from 'native-base'
+import { Text, View } from 'react-native'
+import { Container, Content, Spinner } from 'native-base'
 import TeamCard from '../components/TeamCard'
 import axios from 'axios'
 
@@ -29,9 +29,7 @@ export default class Team extends Component {
                 )
             })
         ) : (
-                <View style={styles.container}>
-                    <Text>Loading bos</Text>
-                </View>
+                <Spinner />
             )
 
         return (
@@ -43,11 +41,3 @@ export default class Team extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
